@@ -1,4 +1,4 @@
-import React from "react";
+/*import React from "react";
 import './CSS/ShopCategory.css'
 import {ShopContext} from '../Context/ShopContext'
 import dropdown_icon from '../Components/Assets/dropdown_icon.png'
@@ -38,4 +38,4 @@ const ShopCategory = (props) => {
     )
 }
 
-export default ShopCategory
+export default ShopCategory*/
