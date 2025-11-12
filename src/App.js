@@ -4,6 +4,7 @@ import Navbar from './Components/Navbar/Navbar';
 import ShopCategory from './Pages/ShopCategory';
 import Product from './Pages/Product';
 import Cart from './Pages/Cart';
+import HomePage from './Pages/HomePage';
 import LoginSignup from './Pages/LoginSignup';
 import Footer from './Components/Footer/Footer';
 
@@ -18,7 +19,7 @@ const App = () => {
         <Navbar />
         <Routes>
           {/* FIX: Using ShopCategory for the root path to avoid the 'Home' module not found error. */}
-          <Route path='/' element={<ShopCategory />} /> 
+          <Route path='/' element={<HomePage />} /> 
           
           <Route path='/men' element={<ShopCategory banner={men_banner} category="men" />} />
           <Route path='/women' element={<ShopCategory banner={women_banner} category="women" />} />
