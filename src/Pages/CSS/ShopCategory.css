@@ -1,3 +1,5 @@
+/* ---------------- Shop Category ---------------- */
+
 .shopcategory-banner {
     display: block;
     margin: 30px auto;
@@ -11,22 +13,74 @@
     align-items: center;
 }
 
-.shopcategory-sort {
-    padding: 10px 20px;
-    border-radius: 40px;
-    border: 1px solid #888;
-}
-
 .shopcategory-indexSort p {
     font-weight: 600;
 }
 
-.shopcategory-products {
-    margin: 20px 170px;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    gap: 30px; 
+.shopcategory-sort {
+    padding: 10px 20px;
+    border-radius: 40px;
+    border: 1px solid #888;
+    cursor: pointer;
 }
+
+/* -------- Product Grid -------- */
+
+.shopcategory-products {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    row-gap: 50px;
+    justify-content: center;
+    margin: 20px 170px;
+}
+
+/* -------- Item Card -------- */
+
+.item {
+    width: 350px;
+    border-radius: 10px;
+    background-color: #fff;
+    transition: all 0.4s ease;
+}
+
+.item img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.item p {
+    margin: 6px 0px;
+}
+
+.item:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* Prices */
+
+.item-prices {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+.item-price-new {
+    color: #374151;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.item-price-old {
+    color: #8c8c8c;
+    font-size: 18px;
+    font-weight: 500;
+    text-decoration: line-through;
+    text-decoration-thickness: 1.5px;
+}
+
+/* -------- Load More -------- */
 
 .shopcategory-loadmore {
     display: flex;
@@ -40,4 +94,5 @@
     color: #5d5d5d;
     font-size: 18px;
     font-weight: 500;
+    cursor: pointer;
 }

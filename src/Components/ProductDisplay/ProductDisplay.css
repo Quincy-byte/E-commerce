@@ -1,6 +1,8 @@
 .productdisplay {
     display: flex;
-    margin: 0px 170px;
+    max-width: 1200px;      /* LIMIT WIDTH */
+    margin: 40px auto;      /* CENTER THE WHOLE PRODUCT PAGE */
+    gap: 40px;              /* EVEN GAP BETWEEN LEFT & RIGHT */
 }
 
 .productdisplay-left {
@@ -15,24 +17,29 @@
 }
 
 .productdisplay-img-list img {
-    height: 163px;
+    height: 120px;          /* In tutorial images are smaller */
+    cursor: pointer;
+    border-radius: 4px;
 }
 
 .productdisplay-main-img {
-    height: 600px;
-    width: 586px;
+    height: 550px;
+    width: 500px;
+    object-fit: cover;
+    border-radius: 6px;
 }
 
 .productdisplay-right {
-    margin: 0px 70px;
+    flex: 1;
     display: flex;
     flex-direction: column;
 }
 
 .productdisplay-right h1 {
     color: #3d3d3d;
-    font-size: 40px;
+    font-size: 32px;
     font-weight: 700;
+    line-height: 40px;
 }
 
 .productdisplay-right-stars {
@@ -46,7 +53,7 @@
 
 .productdisplay-right-prices {
     display: flex;
-    margin: 40px 0px;
+    margin: 25px 0px;
     gap: 30px;
     font-size: 24px;
     font-weight: 700;
@@ -62,11 +69,13 @@
 }
 
 .productdisplay-right-description {
+    color: #3c3c3c;
     font-size: 14px;
+    width: 90%;
 }
 
 .productdisplay-right-size h1 {
-    margin-top: 50px;
+    margin-top: 40px;
     color: #656565;
     font-size: 20px;
     font-weight: 600;
@@ -83,23 +92,30 @@
     background: #fbfbfb;
     border: 1px solid #ebebeb;
     cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.productdisplay-right-size-option:hover {
+    background: #e5e5e5;
 }
 
 .productdisplay-right button {
-    padding: 20px 40px;
-    width: 200px;
+    padding: 18px 40px;
+    width: 220px;
+    margin-top: 20px;
     font-size: 16px;
     font-weight: 600;
     color: white;
     background: #ff4141;
-    margin-bottom: 40px;
     border: none;
     outline: none;
     cursor: pointer;
+    border-radius: 4px;
 }
 
 .productdisplay-right-category {
     margin-top: 10px;
+    font-size: 14px;
 }
 
 .productdisplay-right-category span {

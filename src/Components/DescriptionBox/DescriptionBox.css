@@ -1,0 +1,53 @@
+.descriptionbox {
+    width: 100%;
+    margin-top: 40px; /* Reduced margin */
+    padding: 0 15px; /* Slightly less horizontal padding */
+}
+
+.descriptionbox-navigator {
+    display: flex;
+    margin-bottom: 15px; /* Reduced margin */
+    border-bottom: 1px solid #ccc; /* Slightly darker border */
+}
+
+.descriptionbox-nav-box {
+    padding: 10px 20px; /* Smaller padding */
+    font-size: 16px; /* Smaller font size */
+    font-weight: 500; /* Lighter font weight */
+    color: #666; /* Darker text color */
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    transition: border-color 0.3s ease, color 0.3s ease;
+}
+
+.descriptionbox-nav-box:hover {
+    color: #e44a4a;
+}
+
+.descriptionbox-nav-box.fade {
+    opacity: 0.7; /* Less faded */
+}
+
+.descriptionbox-nav-box.active {
+    color: #e44a4a;
+    border-bottom-color: #e44a4a;
+}
+
+.descriptionbox-description {
+    font-size: 14px; /* Smaller font size */
+    color: #444; /* Slightly darker color */
+    line-height: 1.5; /* Adjusted line height */
+    padding: 15px; /* Smaller padding */
+    background-color: #fff; /* White background */
+    border: 1px solid #ddd; /* Added a border */
+    border-radius: 4px; /* Less rounded corners */
+    box-shadow: none; /* Removed shadow */
+}
+
+.descriptionbox-description p {
+    margin-bottom: 12px; /* Reduced margin */
+}
+
+.descriptionbox-description p:last-child {
+    margin-bottom: 0;
+}

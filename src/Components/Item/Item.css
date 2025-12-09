@@ -1,8 +1,15 @@
 .item {
-    width: 350px;
+    width: 280px;
     border-radius: 10px;
     background-color: #fff;
+    padding: 10px;
+    cursor: pointer;
     transition: all 0.4s ease;
+}
+
+.item img {
+    width: 100%;
+    border-radius: 10px;
 }
 
 .item p {
@@ -11,8 +18,8 @@
 
 .item-prices {
     display: flex;
-    gap: 20px;
-    justify-content: center;
+    gap: 15px;
+    align-items: center;
 }
 
 .item-price-new {
@@ -31,5 +38,13 @@
 
 .item:hover {
     transform: scale(1.05);
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15);
+    box-shadow: 0px 4px 15px rgba(0,0,0,0.15);
+}
+
+.shopcategory-products {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    row-gap: 50px;
+    margin: 30px 0px;
 }

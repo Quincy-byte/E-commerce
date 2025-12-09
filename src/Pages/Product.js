@@ -3,6 +3,8 @@ import { useParams } from 'react-router-dom';
 import { ShopContext } from '../Context/ShopContext'; 
 import Breadcrum from '../Components/Breadcrum/Breadcrum';
 import ProductDisplay from '../Components/ProductDisplay/ProductDisplay'
+import DescriptionBox from '../Components/DescriptionBox/DescriptionBox';
+import RelatedProducts from '../Components/RelatedProducts/RelatedProducts';
 
 
 const Product = () => {
@@ -13,7 +15,9 @@ const Product = () => {
     return (
         <div>
             <Breadcrum product={product} />
-            <ProductDisplay product={product} />          
+            <ProductDisplay product={product} />    
+            <DescriptionBox />   
+            <RelatedProducts currentProductId={product.id} /> {/* Pass currentProductId */}  
         </div>
     );
 };
