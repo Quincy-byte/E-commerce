@@ -15,10 +15,10 @@ class ProductSeeder extends Seeder
     public function run(): void
     {
         // Define the source directory for images (Frontend)
-        // Assuming backend is at Desktop/molod/backend
-        // And frontend assets are at Desktop/molod/E-commerce/src/Components/Assets
-        $sourceDir = base_path('../E-commerce/src/Components/Assets');
-        $targetDir = storage_path('app/public/products');
+        // Backend is children of E-commerce, so ../src works.
+        $sourceDir = base_path('../src/Components/Assets');
+        // Target is public/images directly
+        $targetDir = public_path('images');
 
         // Ensure target directory exists
         if (!File::exists($targetDir)) {
@@ -101,13 +101,14 @@ class ProductSeeder extends Seeder
             
             if (File::exists($sourcePath)) {
                 File::copy($sourcePath, $targetPath);
-                $imagePath = 'storage/products/' . $product['image_file']; // Public URL path
+                // Store just the filename as per new flatten logic, or 'images/filename'
+                $imagePath = $product['image_file']; 
             } else {
                 $imagePath = null;
                 // Log warning?
             }
 
-            DB::table('products')->insert([
+            DB::table('products')->insertOrIgnore([
                 'id' => $product['id'],
                 'name' => $product['name'],
                 'category' => $product['category'],
