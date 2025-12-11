@@ -15,10 +15,7 @@ class ProductController extends Controller
         $products = \App\Models\Product::all();
         // Transform image path to full URL if it's not already a URL
         $products->transform(function ($product) {
-            if (!filter_var($product->image, FILTER_VALIDATE_URL)) {
-                // If it's a local path, flattened logic:
-                // Regardless of what folder the DB says (storage/products/...), 
-                // we serve the file from matching filename in public/images/
+                if (!filter_var($product->image, FILTER_VALIDATE_URL)) {
                 $filename = basename($product->image);
                 $product->image = asset('images/' . $filename);
             }
