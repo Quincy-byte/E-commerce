@@ -6,6 +6,9 @@ import Product from './Pages/Product';
 import Cart from './Pages/Cart';
 import HomePage from './Pages/HomePage';
 import LoginSignup from './Pages/LoginSignup';
+import Checkout from './Pages/Checkout';
+import OrderHistory from './Pages/OrderHistory';
+import Admin from './Pages/Admin/Admin';
 import Footer from './Components/Footer/Footer';
 
 import men_banner from './Components/Assets/banner_mens.png';
@@ -19,12 +22,12 @@ const App = () => {
         <Navbar />
         <Routes>
           {/* FIX: Using ShopCategory for the root path to avoid the 'Home' module not found error. */}
-          <Route path='/' element={<HomePage />} /> 
-          
+          <Route path='/' element={<HomePage />} />
+
           <Route path='/men' element={<ShopCategory banner={men_banner} category="men" />} />
           <Route path='/women' element={<ShopCategory banner={women_banner} category="women" />} />
           <Route path='/kids' element={<ShopCategory banner={kid_banner} category="kid" />} />
-          
+
           <Route path='/product' element={<Product />}>
             {/* The nested route is for product detail pages */}
             <Route path=':productId' element={<Product />} />
@@ -32,6 +35,9 @@ const App = () => {
 
           <Route path='/cart' element={<Cart />} />
           <Route path='/login' element={<LoginSignup />} />
+          <Route path='/checkout' element={<Checkout />} />
+          <Route path='/orders' element={<OrderHistory />} />
+          <Route path='/admin/*' element={<Admin />} />
         </Routes>
         <Footer />
       </BrowserRouter>

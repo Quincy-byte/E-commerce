@@ -1,25 +1,39 @@
-import React, { createContext, useState } from "react";
-import all_product from '../Components/Assets/all_product.js';
+import React, { createContext, useState, useEffect } from "react";
 
 export const ShopContext = createContext(null);
 
-const getDefaultCart = () => {
-    let cart = {};
-    for (let index = 0; index < all_product.length; index++) { // Corrected loop
-        cart[index] = 0;
-    }
-    return cart;
-}
-
 const ShopContextProvider = (props) => {
-    const [cartItems, setCartItems] = useState(getDefaultCart());
+    const [all_product, setAll_Product] = useState([]);
+    const [cartItems, setCartItems] = useState(() => {
+        const savedCart = localStorage.getItem('cartItems');
+        return savedCart ? JSON.parse(savedCart) : {};
+    });
+
+    useEffect(() => {
+        localStorage.setItem('cartItems', JSON.stringify(cartItems));
+    }, [cartItems]);
+
+    useEffect(() => {
+        fetch('http://localhost:8000/api/products')
+            .then((response) => response.json())
+            .then((data) => setAll_Product(data));
+    }, []);
 
     const addToCart = (itemId) => {
-        setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
+        setCartItems((prev) => ({ ...prev, [itemId]: (prev[itemId] || 0) + 1 }));
     }
 
     const removeFromCart = (itemId) => {
-        setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] - 1 }));
+        setCartItems((prev) => {
+            const newCart = { ...prev, [itemId]: (prev[itemId] || 0) - 1 };
+            if (newCart[itemId] <= 0) delete newCart[itemId];
+            return newCart;
+        });
+    }
+
+    const clearCart = () => {
+        setCartItems({});
+        localStorage.removeItem('cartItems');
     }
 
     const getTotalCartAmount = () => {
@@ -27,8 +41,8 @@ const ShopContextProvider = (props) => {
         for (const item in cartItems) {
             if (cartItems[item] > 0) {
                 let itemInfo = all_product.find((product) => product.id === Number(item));
-                if (itemInfo) { // Check if itemInfo is found
-                  totalAmount += itemInfo.new_price * cartItems[item];
+                if (itemInfo) {
+                    totalAmount += itemInfo.new_price * cartItems[item];
                 }
             }
         }
@@ -51,7 +65,8 @@ const ShopContextProvider = (props) => {
         all_product,
         cartItems,
         addToCart,
-        removeFromCart
+        removeFromCart,
+        clearCart
     };
 
     return (

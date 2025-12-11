@@ -1,0 +1,91 @@
+.order-history {
+    width: 100%;
+    min-height: 80vh;
+    padding: 50px 0;
+    background: #f3f4f6;
+    display: flex;
+    justify-content: center;
+}
+
+.order-history-container {
+    width: 90%;
+    max-width: 1000px;
+    background: white;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.order-history-container h1 {
+    font-size: 32px;
+    color: #111827;
+    margin-bottom: 30px;
+    border-bottom: 2px solid #e5e7eb;
+    padding-bottom: 15px;
+}
+
+.order-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.order-item {
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    align-items: center;
+    gap: 15px;
+    background: #fff;
+    transition: box-shadow 0.2s;
+}
+
+.order-item:hover {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.order-item h3 {
+    font-size: 16px;
+    font-weight: 600;
+    color: #374151;
+    margin: 0;
+}
+
+.order-item p {
+    margin: 0;
+    font-size: 14px;
+    color: #4b5563;
+}
+
+.order-item span.status {
+    padding: 4px 12px;
+    border-radius: 9999px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+
+/* Status Colors */
+.status-pending {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+.status-shipped {
+    background: #dbeafe;
+    color: #1e40af;
+}
+
+.status-delivered {
+    background: #d1fae5;
+    color: #065f46;
+}
+
+@media (max-width: 768px) {
+    .order-item {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+}
