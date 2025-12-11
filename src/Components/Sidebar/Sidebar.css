@@ -27,7 +27,6 @@
     cursor: pointer;
     transition: all 0.3s ease;
     color: #4b5563;
-    /* Gray-600 */
 }
 
 .sidebar-item img {
@@ -48,9 +47,7 @@
 /* Hover State */
 .sidebar-item:hover {
     background: #f3f4f6;
-    /* Gray-100 */
     color: #111827;
-    /* Gray-900 */
     transform: translateX(4px);
 }
 
@@ -61,9 +58,7 @@
 /* Active State styling thanks to NavLink */
 .active-link .sidebar-item {
     background: #eff6ff;
-    /* Blue-50 */
     color: #2563eb;
-    /* Blue-600 */
     border-left: 4px solid #2563eb;
     box-shadow: 0 2px 5px rgba(37, 99, 235, 0.1);
 }
@@ -71,7 +66,6 @@
 .active-link .sidebar-item img {
     opacity: 1;
     filter: invert(33%) sepia(68%) saturate(3065%) hue-rotate(205deg) brightness(98%) contrast(93%);
-    /* Makes black/gray icon blue */
 }
 
 @media (max-width: 800px) {

@@ -17,7 +17,7 @@ const AddProduct = () => {
         // console.log("Add Product executed", productDetails);
         let responseData;
 
-        // Simpler JSON payload
+        // Create product object
         let product = { ...productDetails, image: image };
 
         await fetch('http://localhost:8000/api/addproduct', {

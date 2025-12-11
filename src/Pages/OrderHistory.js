@@ -12,7 +12,13 @@ const OrderHistory = () => {
                 'Authorization': `Bearer ${localStorage.getItem('auth-token')}`,
                 'Content-Type': 'application/json',
             },
-        }).then((response) => response.json()).then((data) => setOrders(data));
+        }).then((response) => response.json()).then((data) => {
+            if (Array.isArray(data)) {
+                setOrders(data);
+            } else {
+                window.location.replace('/login');
+            }
+        });
     }, []);
 
     return (
