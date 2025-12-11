@@ -4,7 +4,14 @@ export const ShopContext = createContext(null);
 
 const ShopContextProvider = (props) => {
     const [all_product, setAll_Product] = useState([]);
-    const [cartItems, setCartItems] = useState({});
+    const [cartItems, setCartItems] = useState(() => {
+        const savedCart = localStorage.getItem('cartItems');
+        return savedCart ? JSON.parse(savedCart) : {};
+    });
+
+    useEffect(() => {
+        localStorage.setItem('cartItems', JSON.stringify(cartItems));
+    }, [cartItems]);
 
     useEffect(() => {
         fetch('http://localhost:8000/api/products')
@@ -17,7 +24,16 @@ const ShopContextProvider = (props) => {
     }
 
     const removeFromCart = (itemId) => {
-        setCartItems((prev) => ({ ...prev, [itemId]: (prev[itemId] || 0) - 1 }));
+        setCartItems((prev) => {
+            const newCart = { ...prev, [itemId]: (prev[itemId] || 0) - 1 };
+            if (newCart[itemId] <= 0) delete newCart[itemId];
+            return newCart;
+        });
+    }
+
+    const clearCart = () => {
+        setCartItems({});
+        localStorage.removeItem('cartItems');
     }
 
     const getTotalCartAmount = () => {
@@ -26,7 +42,7 @@ const ShopContextProvider = (props) => {
             if (cartItems[item] > 0) {
                 let itemInfo = all_product.find((product) => product.id === Number(item));
                 if (itemInfo) {
-                   totalAmount += itemInfo.new_price * cartItems[item];
+                    totalAmount += itemInfo.new_price * cartItems[item];
                 }
             }
         }
@@ -49,7 +65,8 @@ const ShopContextProvider = (props) => {
         all_product,
         cartItems,
         addToCart,
-        removeFromCart
+        removeFromCart,
+        clearCart
     };
 
     return (
